@@ -1,0 +1,9 @@
+name: IndustrialWorld
+version: '${version}'
+main: io.github.plugindustry.industrialworld.IndustrialWorld
+api-version: 1.18
+load: STARTUP
+depend: [ WheelCore ]
+authors: [ czm2333, timetraveler314 ]
+description: IndustrialWorld!
+website: https://plugindustry.github.io/
