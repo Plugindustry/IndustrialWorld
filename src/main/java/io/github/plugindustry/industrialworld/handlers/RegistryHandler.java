@@ -16,7 +16,10 @@ public class RegistryHandler {
     }
 
     public static void lootRegistry() {
-        LootHandler.registerBlockLoot(Material.OAK_LEAVES, new ItemStack(Material.STICK), ConfigHandler.getLootProbability("leaves"));
+        LootHandler mainLootHandler = new LootHandler();
+        mainLootHandler.registerBlockLoot(Material.OAK_LEAVES, ConfigHandler.getLootPairs("leaves"));
+
+        MainHandler.registerBlockBreakHandler(mainLootHandler);
     }
 
     public static void doRegistry() {

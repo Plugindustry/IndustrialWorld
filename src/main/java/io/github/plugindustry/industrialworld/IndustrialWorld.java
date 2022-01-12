@@ -3,6 +3,7 @@ package io.github.plugindustry.industrialworld;
 import io.github.plugindustry.industrialworld.event.EventListener;
 import io.github.plugindustry.industrialworld.handlers.ConfigHandler;
 import io.github.plugindustry.industrialworld.handlers.RegistryHandler;
+import io.github.plugindustry.wheelcore.WheelCore;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class IndustrialWorld extends JavaPlugin {

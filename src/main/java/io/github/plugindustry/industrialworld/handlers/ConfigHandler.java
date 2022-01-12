@@ -1,9 +1,13 @@
 package io.github.plugindustry.industrialworld.handlers;
 
 import io.github.plugindustry.industrialworld.IndustrialWorld;
+import io.github.plugindustry.wheelcore.utils.Pair;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConfigHandler {
     private static YamlConfiguration config;
@@ -31,8 +35,10 @@ public class ConfigHandler {
         lootConfig = loadConfiguration("config/loot.yml");
     }
 
-    public static double getLootProbability(String key) {
-        return lootConfig.getDouble(key);
+    public static List<Pair<ItemStack, Double>> getLootPairs(String key) {
+        // TODO: load loot pairs from configuration
+
+        return new ArrayList<>();
     }
 
     public static YamlConfiguration getConfig() {
