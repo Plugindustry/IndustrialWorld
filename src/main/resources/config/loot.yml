@@ -1,1 +1,5 @@
-leaves: 0.3
+leaves:
+ -
+  type: STICK
+  amount: 1
+  probabitlity: 0.3
