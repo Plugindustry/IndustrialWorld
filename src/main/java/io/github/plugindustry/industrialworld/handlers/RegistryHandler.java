@@ -17,6 +17,11 @@ public class RegistryHandler {
     public static void lootRegistry() {
         LootHandler mainLootHandler = new LootHandler();
         mainLootHandler.registerBlockLoot(Material.OAK_LEAVES, ConfigHandler.getLootPairs("leaves"));
+        mainLootHandler.registerBlockLoot(Material.ACACIA_LEAVES, ConfigHandler.getLootPairs("leaves"));
+        mainLootHandler.registerBlockLoot(Material.BIRCH_LEAVES, ConfigHandler.getLootPairs("leaves"));
+        mainLootHandler.registerBlockLoot(Material.DARK_OAK_LEAVES, ConfigHandler.getLootPairs("leaves"));
+        mainLootHandler.registerBlockLoot(Material.JUNGLE_LEAVES, ConfigHandler.getLootPairs("leaves"));
+        mainLootHandler.registerBlockLoot(Material.SPRUCE_LEAVES, ConfigHandler.getLootPairs("leaves"));
 
         MainHandler.registerBlockBreakHandler(mainLootHandler);
     }

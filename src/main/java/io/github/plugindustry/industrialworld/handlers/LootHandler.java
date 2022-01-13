@@ -2,6 +2,7 @@ package io.github.plugindustry.industrialworld.handlers;
 
 import io.github.plugindustry.industrialworld.handlers.interfaces.BlockBreakHandler;
 import io.github.plugindustry.wheelcore.utils.Pair;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
@@ -20,10 +21,12 @@ public class LootHandler implements BlockBreakHandler {
 
     @Override
     public boolean handleBlockBreak(@NotNull BlockBreakEvent event) {
-        if (hasBlockLoot(event.getBlock().getType())) {
-            for (Pair<ItemStack, Double> itemPair : getBlockLoot(event.getBlock().getType())) {
-                if (Math.random() > itemPair.second) {
-                    event.getBlock().getWorld().dropItem(event.getBlock().getLocation(), itemPair.first);
+        if (event.getPlayer().getGameMode() != GameMode.CREATIVE) {
+            if (hasBlockLoot(event.getBlock().getType())) {
+                for (Pair<ItemStack, Double> itemPair : getBlockLoot(event.getBlock().getType())) {
+                    if (Math.random() < itemPair.second) {
+                        event.getBlock().getWorld().dropItem(event.getBlock().getLocation(), itemPair.first);
+                    }
                 }
             }
         }

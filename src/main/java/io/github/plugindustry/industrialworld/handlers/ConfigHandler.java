@@ -3,13 +3,13 @@ package io.github.plugindustry.industrialworld.handlers;
 import io.github.plugindustry.industrialworld.IndustrialWorld;
 import io.github.plugindustry.wheelcore.utils.Pair;
 import org.bukkit.Material;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,7 +23,11 @@ public class ConfigHandler {
 
         File config_yml = new File(dataFolder, path);
         if (!(config_yml.isFile())) {
-            IndustrialWorld.instance.saveDefaultConfig();
+            if (path.equals("config.yml")) {
+                IndustrialWorld.instance.saveDefaultConfig();
+            } else {
+                IndustrialWorld.instance.saveResource(path, true);
+            }
         }
 
         return YamlConfiguration.loadConfiguration(config_yml);
@@ -45,8 +49,8 @@ public class ConfigHandler {
     List<Pair<ItemStack, Double>> getLootPairs(String key) {
         List<Pair<ItemStack, Double>> pairs = new ArrayList<>();
         for (Object o : Objects.requireNonNull(lootConfig.getList(key, new ArrayList<>()))) {
-            ConfigurationSection cs = (ConfigurationSection) o;
-            pairs.add(Pair.of(new ItemStack(Objects.requireNonNull(Material.matchMaterial(Objects.requireNonNull(cs.getString("type")))), cs.getInt("amount")), cs.getDouble("probability")));
+            LinkedHashMap<?,?> map = (LinkedHashMap<?,?>) o;
+            pairs.add(Pair.of(new ItemStack(Objects.requireNonNull(Material.matchMaterial((String) Objects.requireNonNull(map.get("type")))), (Integer) map.get("amount")), (Double) map.get("probability")));
         }
 
         return pairs;
