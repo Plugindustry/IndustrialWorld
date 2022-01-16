@@ -1,6 +1,7 @@
 package io.github.plugindustry.industrialworld.handlers;
 
 import io.github.plugindustry.industrialworld.IndustrialWorld;
+import io.github.plugindustry.wheelcore.manager.ItemMapping;
 import io.github.plugindustry.wheelcore.utils.Pair;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -50,7 +51,26 @@ public class ConfigHandler {
         List<Pair<ItemStack, Double>> pairs = new ArrayList<>();
         for (Object o : Objects.requireNonNull(lootConfig.getList(key, new ArrayList<>()))) {
             LinkedHashMap<?,?> map = (LinkedHashMap<?,?>) o;
-            pairs.add(Pair.of(new ItemStack(Objects.requireNonNull(Material.matchMaterial((String) Objects.requireNonNull(map.get("type")))), (Integer) map.get("amount")), (Double) map.get("probability")));
+
+            String type = (String) Objects.requireNonNull(map.get("type"));
+            String id = (String) Objects.requireNonNull(map.get("id"));
+            Integer amount = (Integer) map.get("amount");
+            Double probability = (Double) map.get("probability");
+
+            ItemStack itemStack;
+
+            if (type.equals("minecraft")) {
+                itemStack = new ItemStack(Objects.requireNonNull(Material.matchMaterial(id)), amount);
+                pairs.add(Pair.of(itemStack, probability));
+            } else if (type.equals("wheelcore")) {
+                if (ItemMapping.isItemExists(id)) {
+                    itemStack = ItemMapping.get(id).clone();
+                    itemStack.setAmount(amount);
+                    pairs.add(Pair.of(itemStack, probability));
+                } else {
+                    throw new IllegalArgumentException();
+                }
+            }
         }
 
         return pairs;

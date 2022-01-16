@@ -14,18 +14,20 @@ import java.util.List;
 
 public class LootHandler implements BlockBreakHandler {
     public HashMap<Material, List<Pair<ItemStack, Double>>> blockLootTable;
+    private boolean doCreativeLoot;
 
     public LootHandler() {
+        this.doCreativeLoot = ConfigHandler.getConfig().getBoolean("do_creative_loot");
         blockLootTable = new HashMap<>();
     }
 
     @Override
     public boolean handleBlockBreak(@NotNull BlockBreakEvent event) {
-        if (event.getPlayer().getGameMode() != GameMode.CREATIVE) {
+        if (doCreativeLoot || event.getPlayer().getGameMode() != GameMode.CREATIVE) {
             if (hasBlockLoot(event.getBlock().getType())) {
                 for (Pair<ItemStack, Double> itemPair : getBlockLoot(event.getBlock().getType())) {
                     if (Math.random() < itemPair.second) {
-                        event.getBlock().getWorld().dropItem(event.getBlock().getLocation(), itemPair.first);
+                        event.getBlock().getWorld().dropItem(event.getBlock().getLocation().add(0,1,0), itemPair.first);
                     }
                 }
             }

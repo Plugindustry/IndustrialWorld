@@ -1,5 +1,13 @@
 leaves:
  -
-  type: STICK
+  type: minecraft
+  id: STICK
+  amount: 1
+  probability: 0.25
+
+grass:
+ -
+  type: wheelcore
+  id: iw:grass
   amount: 1
   probability: 0.25
