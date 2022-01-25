@@ -24,11 +24,10 @@ public class ConfigHandler {
 
         File config_yml = new File(dataFolder, path);
         if (!(config_yml.isFile())) {
-            if (path.equals("config.yml")) {
+            if (path.equals("config.yml"))
                 IndustrialWorld.instance.saveDefaultConfig();
-            } else {
+            else
                 IndustrialWorld.instance.saveResource(path, true);
-            }
         }
 
         return YamlConfiguration.loadConfiguration(config_yml);
@@ -37,20 +36,18 @@ public class ConfigHandler {
     public static void init() {
         File dataFolder = IndustrialWorld.instance.getDataFolder();
 
-        if (!dataFolder.isDirectory()) {
+        if (!dataFolder.isDirectory())
             dataFolder.mkdirs();
-        }
 
         config = loadConfiguration("config.yml");
         lootConfig = loadConfiguration("config/loot.yml");
         recipeConfig = loadConfiguration("config/recipe.yml");
     }
 
-    public static @NotNull
-    List<Pair<ItemStack, Double>> getLootPairs(String key) {
+    public static @NotNull List<Pair<ItemStack, Double>> getLootPairs(String key) {
         List<Pair<ItemStack, Double>> pairs = new ArrayList<>();
         for (Object o : Objects.requireNonNull(lootConfig.getList(key, new ArrayList<>()))) {
-            LinkedHashMap<?,?> map = (LinkedHashMap<?,?>) o;
+            LinkedHashMap<?, ?> map = (LinkedHashMap<?, ?>) o;
 
             String type = (String) Objects.requireNonNull(map.get("type"));
             String id = (String) Objects.requireNonNull(map.get("id"));
@@ -67,9 +64,8 @@ public class ConfigHandler {
                     itemStack = ItemMapping.get(id).clone();
                     itemStack.setAmount(amount);
                     pairs.add(Pair.of(itemStack, probability));
-                } else {
+                } else
                     throw new IllegalArgumentException();
-                }
             }
         }
 

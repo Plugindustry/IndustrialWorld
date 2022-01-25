@@ -21,40 +21,38 @@ public final class ConstItem {
 
         instance = new DummyItem();
         MainManager.registerItem("iw:grass", instance);
-        ItemMapping.set("iw:grass", ItemStackUtil.create(Material.WHEAT)
-                .setDisplayName("[[iw:item.grass.name]]")
+        ItemMapping.set("iw:grass", ItemStackUtil.create(Material.WHEAT).setDisplayName("{{iw:item/grass/name}}")
                 .setInstance(instance)
                 .getItemStack());
         ITEM_GRASS = ItemMapping.get("iw:grass");
 
         instance = new DummyItem();
         MainManager.registerItem("iw:hay", instance);
-        ItemMapping.set("iw:hay", ItemStackUtil.create(Material.WHEAT)
-                .setDisplayName("[[iw:item.hay.name]]")
+        ItemMapping.set("iw:hay", ItemStackUtil.create(Material.WHEAT).setDisplayName("{{iw:item/hay/name}}")
                 .setInstance(instance)
                 .getItemStack());
         ITEM_HAY = ItemMapping.get("iw:hay");
 
         instance = new DummyBlockItem();
         MainManager.registerItem("iw:hay_stack", instance);
-        ItemMapping.set("iw:hay_stack", ItemStackUtil.create(Material.HAY_BLOCK)
-                .setDisplayName("[[iw:item.hay_stack.name]]")
+        ItemMapping.set("iw:hay_stack", ItemStackUtil.create(Material.HAY_BLOCK).setDisplayName(
+                        "{{iw:item/hay_stack/name}}")
                 .setInstance(instance)
                 .getItemStack());
         ITEM_HAY_STACK = ItemMapping.get("iw:hay_stack");
 
         instance = new DummyBlockItem();
         MainManager.registerItem("iw:grass_stack", instance);
-        ItemMapping.set("iw:grass_stack", ItemStackUtil.create(Material.HAY_BLOCK)
-                .setDisplayName("[[iw:item.grass_stack.name]]")
+        ItemMapping.set("iw:grass_stack", ItemStackUtil.create(Material.HAY_BLOCK).setDisplayName(
+                        "{{iw:item/grass_stack/name}}")
                 .setInstance(instance)
                 .getItemStack());
         ITEM_GRASS_STACK = ItemMapping.get("iw:grass_stack");
 
         instance = new DummyItem();
         MainManager.registerItem("iw:fire_starter", instance);
-        ItemMapping.set("iw:fire_starter", ItemStackUtil.create(Material.FLINT_AND_STEEL)
-                .setDisplayName("[[iw:item.fire_starter.name]]")
+        ItemMapping.set("iw:fire_starter", ItemStackUtil.create(Material.FLINT_AND_STEEL).setDisplayName(
+                        "{{iw:item/fire_starter/name}}")
                 .setInstance(instance)
                 .getItemStack());
         ITEM_FIRE_STARTER = ItemMapping.get("iw:fire_starter");

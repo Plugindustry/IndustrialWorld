@@ -12,36 +12,28 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class BlockGrassStack extends DummyBlock implements Tickable {
     public static final BlockGrassStack INSTANCE = new BlockGrassStack();
     public static final int lifespan = ConfigHandler.getConfig().getInt("grass_lifespan");
 
-    private BlockGrassStack() {
-
-    }
+    private BlockGrassStack() {}
 
     @Override
     public void onTick() {
-        List<Location> toBeModified = new ArrayList<>();
-
         MainManager.blockDataProvider.blocksOf(this).forEach(block -> {
             Location location = Objects.requireNonNull(block);
             BlockGrassStackData temp = (BlockGrassStackData) Objects.requireNonNull(MainManager.getBlockData(location));
 
             temp.addAge(1);
             if (temp.isDried()) {
-                toBeModified.add(location);
+                MainManager.queuePostTickTask(() -> {
+                    MainManager.removeBlock(location);
+                    BlockHayStack.INSTANCE.onBlockPlace(null, location.getBlock(), null, null);
+                });
             }
         });
-
-        for (Location location : toBeModified) {
-            MainManager.removeBlock(location);
-            MainManager.addBlock(location, BlockHayStack.INSTANCE, null);
-        }
     }
 
     @Override

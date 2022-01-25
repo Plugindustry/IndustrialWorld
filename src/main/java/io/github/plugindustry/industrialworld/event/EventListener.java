@@ -6,10 +6,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 public class EventListener implements Listener {
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
-        if (!event.isCancelled()) {
-            event.setCancelled(!MainHandler.processBlockBreak(event));
-        }
+        event.setCancelled(!MainHandler.processBlockBreak(event));
     }
 }
