@@ -6,6 +6,8 @@ import io.github.plugindustry.industrialworld.handlers.RegistryHandler;
 import io.github.plugindustry.wheelcore.i18n.I18n;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -28,8 +30,12 @@ public final class IndustrialWorld extends JavaPlugin {
 
         ConfigHandler.init();
 
-        I18n.load(Locale.SIMPLIFIED_CHINESE, Objects.requireNonNull(getTextResource("langs/zh-cn.lang")));
-        I18n.load(Locale.US, Objects.requireNonNull(getTextResource("langs/en-us.lang")));
+        I18n.load(Locale.SIMPLIFIED_CHINESE,
+                  new InputStreamReader(Objects.requireNonNull(getResource("langs/zh-cn.lang")),
+                                        StandardCharsets.UTF_8));
+        I18n.load(Locale.US,
+                  new InputStreamReader(Objects.requireNonNull(getResource("langs/en-us.lang")),
+                                        StandardCharsets.UTF_8));
 
         getServer().getPluginManager().registerEvents(new EventListener(), this);
 
