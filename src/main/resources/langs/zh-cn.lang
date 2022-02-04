@@ -3,3 +3,6 @@ iw#item/hay/name=干草
 iw#item/hay_stack/name=干草垛
 iw#item/grass_stack/name=草垛
 iw#item/fire_starter/name=引火器
+iw#item/flint_pickaxe/name=燧石镐
+iw#item/flint_axe/name=燧石斧
+iw#item/flint_sword/name=燧石剑

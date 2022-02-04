@@ -3,3 +3,6 @@ iw#item/hay/name=Hay
 iw#item/hay_stack/name=Hay Stack
 iw#item/grass_stack/name=Grass Stack
 iw#item/fire_starter/name=Fire Starter
+iw#item/flint_pickaxe/name=Flint Pickaxe
+iw#item/flint_axe/name=Flint Axe
+iw#item/flint_sword/name=Flint Sword
