@@ -15,6 +15,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Collections;
 import java.util.List;
 
 public class RegistryHandler {
@@ -27,36 +28,39 @@ public class RegistryHandler {
         RecipeRegistry.register(ShapedRecipeFactory.create()
                                         .map('a', new OreDictionaryChoice("planks"))
                                         .pattern("aaa", "aaa", "aaa")
-                                        .build(new ItemStack(Material.CRAFTING_TABLE)), "minecraft:crafting_table");
+                                        .build(new ItemStack(Material.CRAFTING_TABLE)), "minecraft/crafting_table");
         RecipeRegistry.register(ShapedRecipeFactory.create()
                                         .map('a',
                                              new ItemInstanceChoice(MainManager.getItemInstance(ConstItem.ITEM_GRASS)))
-                                        .pattern("aax", "aax", "xxx")
-                                        .build(ConstItem.ITEM_GRASS_STACK), "iw:grass_stack");
+                                        .pattern("aa", "aa")
+                                        .build(ConstItem.ITEM_GRASS_STACK), "iw/grass_stack");
         RecipeRegistry.register(ShapedRecipeFactory.create()
-                                        .map('a', new OreDictionaryChoice("pickaxe"))
+                                        .map('a',
+                                             new OreDictionaryChoice(Collections.singletonList("pickaxe"), false))
                                         .map('b',
-                                             new OreDictionaryChoice("axe"))
+                                             new OreDictionaryChoice(Collections.singletonList("axe"),
+                                                                     false))
                                         .map('c', new OreDictionaryChoice("log"))
-                                        .addDamage(new OreDictionaryChoice("pickaxe"), 1)
-                                        .addDamage(new OreDictionaryChoice("axe"), 1)
-                                        .pattern("abx", "ccx", "xxx")
-                                        .build(new ItemStack(Material.CRAFTING_TABLE)), "minecraft:crafting_table_2");
+                                        .addDamage(new OreDictionaryChoice(Collections.singletonList("pickaxe"), false),
+                                                   1)
+                                        .addDamage(new OreDictionaryChoice(Collections.singletonList("axe"), false), 1)
+                                        .pattern("ab", "cc")
+                                        .build(new ItemStack(Material.CRAFTING_TABLE)), "minecraft/crafting_table_2");
         RecipeRegistry.register(ShapedRecipeFactory.create()
                                         .map('a', new VanillaMaterialChoice(Material.FLINT))
                                         .map('b', new VanillaMaterialChoice(Material.STICK))
-                                        .pattern("aax", "bxx", "xxx")
-                                        .build(ConstItem.ITEM_FLINT_PICKAXE), "iw:flint_pickaxe");
+                                        .pattern("aa", "b")
+                                        .build(ConstItem.ITEM_FLINT_PICKAXE), "iw/flint_pickaxe");
         RecipeRegistry.register(ShapedRecipeFactory.create()
                                         .map('a', new VanillaMaterialChoice(Material.FLINT))
                                         .map('b', new VanillaMaterialChoice(Material.STICK))
-                                        .pattern("aax", "bax", "xxx")
-                                        .build(ConstItem.ITEM_FLINT_AXE), "iw:flint_axe");
+                                        .pattern("aa", "ba")
+                                        .build(ConstItem.ITEM_FLINT_AXE), "iw/flint_axe");
         RecipeRegistry.register(ShapedRecipeFactory.create()
                                         .map('a', new VanillaMaterialChoice(Material.FLINT))
                                         .map('b', new VanillaMaterialChoice(Material.STICK))
-                                        .pattern("axx", "bxx", "xxx")
-                                        .build(ConstItem.ITEM_FLINT_SWORD), "iw:flint_sword");
+                                        .pattern("a", "b")
+                                        .build(ConstItem.ITEM_FLINT_SWORD), "iw/flint_sword");
         RecipeRegistry.updatePlaceholders();
     }
 
@@ -78,6 +82,10 @@ public class RegistryHandler {
         mainLootHandler.registerBlockLoot(Material.GRASS_BLOCK, ConfigHandler.getLootPairs("grass"));
 
         MainHandler.registerBlockBreakHandler(mainLootHandler);
+
+        VanillaChangeHandler vanillaChangeHandler = new VanillaChangeHandler();
+        vanillaChangeHandler.init();
+        MainHandler.registerBlockBreakHandler(vanillaChangeHandler);
     }
 
     public static void doRegistry() {

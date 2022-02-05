@@ -30,6 +30,6 @@ public class ItemFlintPickaxe extends DummyTool {
     @Nonnull
     @Override
     public Optional<Integer> onItemDamage(@Nullable Player player, @Nonnull ItemStack item, int damage) {
-        return Optional.of(damage * 2);
+        return Optional.of(damage * 4);
     }
 }
