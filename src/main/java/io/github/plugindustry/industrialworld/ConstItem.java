@@ -29,44 +29,44 @@ public final class ConstItem {
 
         instance = new DummyItem();
         MainManager.registerItem("iw:grass", instance);
-        ItemMapping.set("iw:grass", ItemStackUtil.create(Material.WHEAT).setDisplayName(I18n.getLocalePlaceholder(
-                "iw#item/grass/name")).setInstance(instance).getItemStack());
+        ItemMapping.set("iw:grass", ItemStackUtil.create(Material.WHEAT).displayName(I18n.getLocalePlaceholder(
+                "iw#item/grass/name")).instance(instance).getItemStack());
         ITEM_GRASS = ItemMapping.get("iw:grass");
 
         instance = new DummyItem();
         MainManager.registerItem("iw:hay", instance);
-        ItemMapping.set("iw:hay", ItemStackUtil.create(Material.WHEAT).setDisplayName(I18n.getLocalePlaceholder(
-                "iw#item/hay/name")).setInstance(instance).getItemStack());
+        ItemMapping.set("iw:hay", ItemStackUtil.create(Material.WHEAT).displayName(I18n.getLocalePlaceholder(
+                "iw#item/hay/name")).instance(instance).getItemStack());
         ITEM_HAY = ItemMapping.get("iw:hay");
 
         instance = new DummyBlockItem();
         MainManager.registerItem("iw:hay_stack", instance);
         ItemMapping.set("iw:hay_stack",
-                        ItemStackUtil.create(Material.HAY_BLOCK).setDisplayName(I18n.getLocalePlaceholder(
-                                "iw#item/hay_stack/name")).setInstance(instance).getItemStack());
+                        ItemStackUtil.create(Material.HAY_BLOCK).displayName(I18n.getLocalePlaceholder(
+                                "iw#item/hay_stack/name")).instance(instance).getItemStack());
         ITEM_HAY_STACK = ItemMapping.get("iw:hay_stack");
 
         instance = new DummyBlockItem();
         MainManager.registerItem("iw:grass_stack", instance);
         ItemMapping.set("iw:grass_stack",
-                        ItemStackUtil.create(Material.HAY_BLOCK).setDisplayName(I18n.getLocalePlaceholder(
-                                "iw#item/grass_stack/name")).setInstance(instance).getItemStack());
+                        ItemStackUtil.create(Material.HAY_BLOCK).displayName(I18n.getLocalePlaceholder(
+                                "iw#item/grass_stack/name")).instance(instance).getItemStack());
         ITEM_GRASS_STACK = ItemMapping.get("iw:grass_stack");
 
         instance = new DummyItem();
         MainManager.registerItem("iw:fire_starter", instance);
         ItemMapping.set("iw:fire_starter",
-                        ItemStackUtil.create(Material.FLINT_AND_STEEL).setDisplayName(I18n.getLocalePlaceholder(
-                                "iw#item/fire_starter/name")).setInstance(instance).getItemStack());
+                        ItemStackUtil.create(Material.FLINT_AND_STEEL).displayName(I18n.getLocalePlaceholder(
+                                "iw#item/fire_starter/name")).instance(instance).getItemStack());
         ITEM_FIRE_STARTER = ItemMapping.get("iw:fire_starter");
 
         instance = ItemFlintPickaxe.INSTANCE;
         MainManager.registerItem("iw:flint_pickaxe", instance);
         ItemMapping.set("iw:flint_pickaxe",
                         ItemStackUtil.create(Material.STONE_PICKAXE)
-                                .setDisplayName(I18n.getLocalePlaceholder("iw#item/flint_pickaxe/name"))
-                                .setOreDictionary("pickaxe")
-                                .setInstance(instance)
+                                .displayName(I18n.getLocalePlaceholder("iw#item/flint_pickaxe/name"))
+                                .oreDictionary("pickaxe")
+                                .instance(instance)
                                 .getItemStack());
         ITEM_FLINT_PICKAXE = ItemMapping.get("iw:flint_pickaxe");
 
@@ -74,9 +74,9 @@ public final class ConstItem {
         MainManager.registerItem("iw:flint_axe", instance);
         ItemMapping.set("iw:flint_axe",
                         ItemStackUtil.create(Material.STONE_AXE)
-                                .setDisplayName(I18n.getLocalePlaceholder("iw#item/flint_axe/name"))
-                                .setOreDictionary("axe")
-                                .setInstance(instance)
+                                .displayName(I18n.getLocalePlaceholder("iw#item/flint_axe/name"))
+                                .oreDictionary("axe")
+                                .instance(instance)
                                 .getItemStack());
         ITEM_FLINT_AXE = ItemMapping.get("iw:flint_axe");
 
@@ -84,9 +84,9 @@ public final class ConstItem {
         MainManager.registerItem("iw:flint_sword", instance);
         ItemMapping.set("iw:flint_sword",
                         ItemStackUtil.create(Material.STONE_SWORD)
-                                .setDisplayName(I18n.getLocalePlaceholder("iw#item/flint_sword/name"))
-                                .setOreDictionary("sword")
-                                .setInstance(instance)
+                                .displayName(I18n.getLocalePlaceholder("iw#item/flint_sword/name"))
+                                .oreDictionary("sword")
+                                .instance(instance)
                                 .getItemStack());
         ITEM_FLINT_SWORD = ItemMapping.get("iw:flint_sword");
     }
