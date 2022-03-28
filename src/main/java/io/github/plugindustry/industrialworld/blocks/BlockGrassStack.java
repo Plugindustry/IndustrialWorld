@@ -9,9 +9,9 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
 import java.util.Objects;
 
 public class BlockGrassStack extends DummyBlock implements Tickable {
@@ -36,13 +36,10 @@ public class BlockGrassStack extends DummyBlock implements Tickable {
         });
     }
 
+    @Nullable
     @Override
-    public boolean onBlockPlace(@Nullable ItemStack item, @Nonnull Block block, @Nullable Block blockAgainst, @Nullable Player player) {
-        if (super.onBlockPlace(item, block, blockAgainst, player)) {
-            MainManager.setBlockData(block.getLocation(), new BlockGrassStackData(0));
-            return true;
-        }
-        return false;
+    public BlockData getInitialData(@Nullable ItemStack item, @NotNull Block block, @Nullable Block blockAgainst, @Nullable Player player) {
+        return new BlockGrassStackData(0);
     }
 
     public static class BlockGrassStackData extends BlockData {
