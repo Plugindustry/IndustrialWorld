@@ -1,5 +1,6 @@
 package io.github.plugindustry.industrialworld.items;
 
+import io.github.plugindustry.industrialworld.annotations.ItemInstance;
 import io.github.plugindustry.wheelcore.interfaces.item.DummyTool;
 import io.github.plugindustry.wheelcore.utils.BlockUtil;
 import org.bukkit.Material;
@@ -11,11 +12,13 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 import java.util.Optional;
 
+@ItemInstance("iw:flint_pickaxe")
 public class ItemFlintPickaxe extends DummyTool {
     public final static ItemFlintPickaxe INSTANCE = new ItemFlintPickaxe();
     private final static ItemStack WOODEN_PICKAXE = new ItemStack(Material.WOODEN_PICKAXE);
 
-    private ItemFlintPickaxe() {}
+    private ItemFlintPickaxe() {
+    }
 
     @Override
     public float getToolBonus(@Nonnull Block block, @Nonnull ItemStack itemStack) {

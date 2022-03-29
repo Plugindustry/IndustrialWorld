@@ -19,7 +19,7 @@ public class LootHandler implements BlockBreakHandler {
     @Override
     public boolean handleBlockBreak(@NotNull BlockBreakEvent event) {
         if ((doCreativeLoot || (event.getPlayer().getGameMode() != GameMode.CREATIVE)) && hasBlockLoot(event.getBlock()
-                                                                                                               .getType()))
+                                                                                                            .getType()))
             for (Pair<ItemStack, Double> itemPair : getBlockLoot(event.getBlock().getType()))
                 if (Math.random() < itemPair.second)
                     event.getBlock().getWorld().dropItem(event.getBlock().getLocation().add(0, 1, 0), itemPair.first);
@@ -37,6 +37,6 @@ public class LootHandler implements BlockBreakHandler {
 
     private List<Pair<ItemStack, Double>> getBlockLoot(Material material) {
         return blockLootTable.getOrDefault(material,
-                                           Collections.singletonList(Pair.of(new ItemStack(Material.AIR), 0.0)));
+                Collections.singletonList(Pair.of(new ItemStack(Material.AIR), 0.0)));
     }
 }

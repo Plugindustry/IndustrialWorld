@@ -1,5 +1,6 @@
 package io.github.plugindustry.industrialworld.blocks;
 
+import io.github.plugindustry.industrialworld.annotations.BlockInstance;
 import io.github.plugindustry.industrialworld.handlers.ConfigHandler;
 import io.github.plugindustry.wheelcore.interfaces.Tickable;
 import io.github.plugindustry.wheelcore.interfaces.block.BlockData;
@@ -14,11 +15,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
+@BlockInstance("iw:grass_stack")
 public class BlockGrassStack extends DummyBlock implements Tickable {
     public static final BlockGrassStack INSTANCE = new BlockGrassStack();
     public static final int lifespan = ConfigHandler.getConfig().getInt("grass_lifespan");
 
-    private BlockGrassStack() {}
+    private BlockGrassStack() {
+    }
 
     @Override
     public void onTick() {

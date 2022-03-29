@@ -1,5 +1,6 @@
 package io.github.plugindustry.industrialworld.items;
 
+import io.github.plugindustry.industrialworld.annotations.ItemInstance;
 import io.github.plugindustry.wheelcore.interfaces.item.DummyTool;
 import io.github.plugindustry.wheelcore.utils.BlockUtil;
 import org.bukkit.Material;
@@ -11,11 +12,13 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 import java.util.Optional;
 
+@ItemInstance("iw:flint_axe")
 public class ItemFlintAxe extends DummyTool {
     public final static ItemFlintAxe INSTANCE = new ItemFlintAxe();
     private final static ItemStack WOODEN_AXE = new ItemStack(Material.WOODEN_AXE);
 
-    private ItemFlintAxe() {}
+    private ItemFlintAxe() {
+    }
 
     @Override
     public float getToolBonus(@Nonnull Block block, @Nonnull ItemStack itemStack) {

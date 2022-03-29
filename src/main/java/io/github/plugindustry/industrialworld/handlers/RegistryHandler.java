@@ -1,8 +1,8 @@
 package io.github.plugindustry.industrialworld.handlers;
 
 import io.github.plugindustry.industrialworld.ConstItem;
-import io.github.plugindustry.industrialworld.blocks.BlockGrassStack;
-import io.github.plugindustry.industrialworld.blocks.BlockHayStack;
+import io.github.plugindustry.industrialworld.IndustrialWorld;
+import io.github.plugindustry.industrialworld.utils.RegisterHelper;
 import io.github.plugindustry.wheelcore.manager.MainManager;
 import io.github.plugindustry.wheelcore.manager.RecipeRegistry;
 import io.github.plugindustry.wheelcore.manager.recipe.ShapedRecipeFactory;
@@ -26,47 +26,58 @@ public class RegistryHandler {
 
         // Custom recipes
         RecipeRegistry.register(ShapedRecipeFactory.create()
-                                        .map('a', new OreDictionaryChoice("planks"))
-                                        .pattern("aaa", "aaa", "aaa")
-                                        .build(new ItemStack(Material.CRAFTING_TABLE)), "minecraft/crafting_table");
+                                                   .map('a', new OreDictionaryChoice("planks"))
+                                                   .pattern("aaa", "aaa", "aaa")
+                                                   .build(new ItemStack(Material.CRAFTING_TABLE)),
+                "minecraft/crafting_table");
         RecipeRegistry.register(ShapedRecipeFactory.create()
-                                        .map('a',
-                                             new ItemInstanceChoice(MainManager.getItemInstance(ConstItem.ITEM_GRASS)))
-                                        .pattern("aa", "aa")
-                                        .build(ConstItem.ITEM_GRASS_STACK), "iw/grass_stack");
+                                                   .map('a',
+                                                           new ItemInstanceChoice(
+                                                                   MainManager.getItemInstance(ConstItem.GRASS)))
+                                                   .pattern("aa", "aa")
+                                                   .build(ConstItem.GRASS_STACK), "iw/grass_stack");
         RecipeRegistry.register(ShapedRecipeFactory.create()
-                                        .map('a',
-                                             new OreDictionaryChoice(Collections.singletonList("pickaxe"), false))
-                                        .map('b',
-                                             new OreDictionaryChoice(Collections.singletonList("axe"),
-                                                                     false))
-                                        .map('c', new OreDictionaryChoice("log"))
-                                        .addDamage(new OreDictionaryChoice(Collections.singletonList("pickaxe"), false),
-                                                   1)
-                                        .addDamage(new OreDictionaryChoice(Collections.singletonList("axe"), false), 1)
-                                        .pattern("ab", "cc")
-                                        .build(new ItemStack(Material.CRAFTING_TABLE)), "minecraft/crafting_table_2");
+                                                   .map('a',
+                                                           new OreDictionaryChoice(Collections.singletonList("pickaxe"),
+                                                                   false))
+                                                   .map('b',
+                                                           new OreDictionaryChoice(Collections.singletonList("axe"),
+                                                                   false))
+                                                   .map('c', new OreDictionaryChoice("log"))
+                                                   .addDamage(
+                                                           new OreDictionaryChoice(Collections.singletonList("pickaxe"),
+                                                                   false),
+                                                           1)
+                                                   .addDamage(new OreDictionaryChoice(Collections.singletonList("axe"),
+                                                           false), 1)
+                                                   .pattern("ab", "cc")
+                                                   .build(new ItemStack(Material.CRAFTING_TABLE)),
+                "minecraft/crafting_table_2");
         RecipeRegistry.register(ShapedRecipeFactory.create()
-                                        .map('a', new VanillaMaterialChoice(Material.FLINT))
-                                        .map('b', new VanillaMaterialChoice(Material.STICK))
-                                        .pattern("aa", "b")
-                                        .build(ConstItem.ITEM_FLINT_PICKAXE), "iw/flint_pickaxe");
+                                                   .map('a', new VanillaMaterialChoice(Material.FLINT))
+                                                   .map('b', new VanillaMaterialChoice(Material.STICK))
+                                                   .pattern("aa", "b")
+                                                   .build(ConstItem.FLINT_PICKAXE), "iw/flint_pickaxe");
         RecipeRegistry.register(ShapedRecipeFactory.create()
-                                        .map('a', new VanillaMaterialChoice(Material.FLINT))
-                                        .map('b', new VanillaMaterialChoice(Material.STICK))
-                                        .pattern("aa", "ba")
-                                        .build(ConstItem.ITEM_FLINT_AXE), "iw/flint_axe");
+                                                   .map('a', new VanillaMaterialChoice(Material.FLINT))
+                                                   .map('b', new VanillaMaterialChoice(Material.STICK))
+                                                   .pattern("aa", "ba")
+                                                   .build(ConstItem.FLINT_AXE), "iw/flint_axe");
         RecipeRegistry.register(ShapedRecipeFactory.create()
-                                        .map('a', new VanillaMaterialChoice(Material.FLINT))
-                                        .map('b', new VanillaMaterialChoice(Material.STICK))
-                                        .pattern("a", "b")
-                                        .build(ConstItem.ITEM_FLINT_SWORD), "iw/flint_sword");
+                                                   .map('a', new VanillaMaterialChoice(Material.FLINT))
+                                                   .map('b', new VanillaMaterialChoice(Material.STICK))
+                                                   .pattern("a", "b")
+                                                   .build(ConstItem.FLINT_SWORD), "iw/flint_sword");
         RecipeRegistry.updatePlaceholders();
     }
 
+    public static void itemRegistry() {
+        RegisterHelper.registerItems(IndustrialWorld.class.getPackageName());
+        RegisterHelper.generateItems(ConstItem.class);
+    }
+
     public static void blockRegistry() {
-        MainManager.registerBlock("iw:grass_stack", BlockGrassStack.INSTANCE);
-        MainManager.registerBlock("iw:hay_stack", BlockHayStack.INSTANCE);
+        RegisterHelper.registerBlocks(IndustrialWorld.class.getPackageName());
     }
 
     public static void lootRegistry() {
@@ -89,8 +100,8 @@ public class RegistryHandler {
     }
 
     public static void doRegistry() {
+        itemRegistry();
         blockRegistry();
-        ConstItem.init();
 
         recipeRegistry();
         lootRegistry();
