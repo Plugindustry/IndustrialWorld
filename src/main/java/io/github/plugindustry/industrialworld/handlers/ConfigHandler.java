@@ -22,15 +22,15 @@ public class ConfigHandler {
     public static @NotNull YamlConfiguration loadConfiguration(String path) {
         File dataFolder = IndustrialWorld.instance.getDataFolder();
 
-        File config_yml = new File(dataFolder, path);
-        if (!(config_yml.isFile())) {
+        File configFile = new File(dataFolder, path);
+        if (!(configFile.isFile())) {
             if (path.equals("config.yml"))
                 IndustrialWorld.instance.saveDefaultConfig();
             else
                 IndustrialWorld.instance.saveResource(path, true);
         }
 
-        return YamlConfiguration.loadConfiguration(config_yml);
+        return YamlConfiguration.loadConfiguration(configFile);
     }
 
     public static void init() {
@@ -61,7 +61,7 @@ public class ConfigHandler {
                 pairs.add(Pair.of(itemStack, probability));
             } else if (type.equals("wheelcore")) {
                 if (ItemMapping.isItemExists(id)) {
-                    itemStack = ItemMapping.get(id).clone();
+                    itemStack = ItemMapping.get(id);
                     itemStack.setAmount(amount);
                     pairs.add(Pair.of(itemStack, probability));
                 } else
