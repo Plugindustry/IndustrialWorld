@@ -34,7 +34,8 @@ public class RegisterHelper {
             try {
                 MainManager.registerBlock(id, (BlockBase) clazz.getDeclaredField("INSTANCE").get(null));
             } catch (Exception e) {
-                IndustrialWorld.instance.getLogger().log(Level.SEVERE, e, () -> "Failed to register block " + id);
+                IndustrialWorld.instance.getLogger()
+                                        .log(Level.SEVERE, e, () -> "Failed to register block " + id);
             }
         });
     }
@@ -49,7 +50,8 @@ public class RegisterHelper {
             try {
                 MainManager.registerItem(id, (ItemBase) clazz.getDeclaredField("INSTANCE").get(null));
             } catch (Exception e) {
-                IndustrialWorld.instance.getLogger().log(Level.SEVERE, e, () -> "Failed to register item " + id);
+                IndustrialWorld.instance.getLogger()
+                                        .log(Level.SEVERE, e, () -> "Failed to register item " + id);
             }
         });
     }
@@ -68,16 +70,15 @@ public class RegisterHelper {
                 else instance = (ItemBase) annotation.instance().getDeclaredField("INSTANCE").get(null);
 
                 String id = Objects.requireNonNull(MainManager.getIdFromInstance(instance));
-                ItemStackUtil.ItemStackFactory temp = ItemStackUtil.create(annotation.type()).instance(instance)
-                                                                   .oreDictionary(annotation.oreDictionary());
-                if (annotation.hasDisplayName())
-                    temp.displayName(I18n.getLocalePlaceholder(
-                            String.format("%s#item/%s/name", id.substring(0, id.indexOf(":")),
-                                    id.substring(id.indexOf(":") + 1))));
-                if (annotation.hasLore())
-                    temp.lore(Collections.singletonList(I18n.getLocaleListPlaceholder(
-                            String.format("%s#item/%s/lore", id.substring(0, id.indexOf(":")),
-                                    id.substring(id.indexOf(":") + 1)))));
+                ItemStackUtil.ItemStackFactory temp =
+                        ItemStackUtil.create(annotation.type()).instance(instance)
+                                     .oreDictionary(annotation.oreDictionary());
+                if (annotation.hasDisplayName()) temp.displayName(I18n.getLocalePlaceholder(
+                        String.format("%s#item/%s/name", id.substring(0, id.indexOf(":")),
+                                id.substring(id.indexOf(":") + 1))));
+                if (annotation.hasLore()) temp.lore(Collections.singletonList(I18n.getLocaleListPlaceholder(
+                        String.format("%s#item/%s/lore", id.substring(0, id.indexOf(":")),
+                                id.substring(id.indexOf(":") + 1)))));
                 switch (annotation.customModelDataType()) {
                     case NONE -> ItemMapping.set(id, temp.getItemStack());
                     case ID_GENERATED -> ItemMapping.set(id, temp.customModelData(id).getItemStack());
@@ -87,7 +88,8 @@ public class RegisterHelper {
                 field.set(null, ItemMapping.get(id));
             } catch (Exception e) {
                 IndustrialWorld.instance.getLogger().log(Level.SEVERE, e,
-                        () -> String.format("Failed to generate item %s.%s", clazz.getName(), field.getName()));
+                        () -> String.format("Failed to generate item %s.%s", clazz.getName(),
+                                field.getName()));
             }
         });
     }

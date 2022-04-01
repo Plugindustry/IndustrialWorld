@@ -40,7 +40,8 @@ public class ItemCrushedMalachite extends DummyItem {
     }
 
     @Override
-    public boolean onInteract(@NotNull Player player, @NotNull Action action, @Nullable EquipmentSlot hand, @Nullable ItemStack tool, @Nullable Block block, @Nullable Entity entity) {
+    public boolean onInteract(@NotNull Player player, @NotNull Action action, @Nullable EquipmentSlot hand,
+                              @Nullable ItemStack tool, @Nullable Block block, @Nullable Entity entity) {
         if (super.onInteract(player, action, hand, tool, block, entity)) {
             if (action == Action.RIGHT_CLICK_BLOCK && block != null && !MainManager.hasBlock(
                     block.getLocation()) && block.getType() == NEEDED_CAULDRON_TYPE) {
@@ -48,9 +49,11 @@ public class ItemCrushedMalachite extends DummyItem {
                 if (data.getLevel() > 0) {
                     player.getInventory().setItem(Objects.requireNonNull(hand),
                             ItemStackUtil.clone(Objects.requireNonNull(tool), tool.getAmount() - 1));
-                    player.getWorld().dropItem(player.getLocation(), ConstItem.PURE_CRUSHED_MALACHITE.clone());
+                    player.getWorld()
+                          .dropItem(player.getLocation(), ConstItem.PURE_CRUSHED_MALACHITE.clone());
                     player.getWorld().dropItem(player.getLocation(),
-                            ItemStackUtil.clone(ConstItem.STONE_POWDER, ThreadLocalRandom.current().nextInt(1, 3)));
+                            ItemStackUtil.clone(ConstItem.STONE_POWDER,
+                                    ThreadLocalRandom.current().nextInt(1, 3)));
                     if (ThreadLocalRandom.current().nextBoolean())
                         player.getWorld().dropItem(player.getLocation(), ConstItem.QUARTZ_POWDER.clone());
 

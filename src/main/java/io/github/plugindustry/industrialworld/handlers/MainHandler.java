@@ -13,8 +13,7 @@ public class MainHandler {
 
     public static boolean processBlockBreak(BlockBreakEvent event) {
         for (BlockBreakHandler blockBreakHandler : blockBreakHandlers)
-            if (!blockBreakHandler.handleBlockBreak(event))
-                return false;
+            if (!blockBreakHandler.handleBlockBreak(event)) return false;
         return true;
     }
 

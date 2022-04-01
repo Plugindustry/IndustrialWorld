@@ -24,10 +24,8 @@ public class ConfigHandler {
 
         File configFile = new File(dataFolder, path);
         if (!(configFile.isFile())) {
-            if (path.equals("config.yml"))
-                IndustrialWorld.instance.saveDefaultConfig();
-            else
-                IndustrialWorld.instance.saveResource(path, true);
+            if (path.equals("config.yml")) IndustrialWorld.instance.saveDefaultConfig();
+            else IndustrialWorld.instance.saveResource(path, true);
         }
 
         return YamlConfiguration.loadConfiguration(configFile);
@@ -36,8 +34,7 @@ public class ConfigHandler {
     public static void init() {
         File dataFolder = IndustrialWorld.instance.getDataFolder();
 
-        if (!dataFolder.isDirectory())
-            dataFolder.mkdirs();
+        if (!dataFolder.isDirectory()) dataFolder.mkdirs();
 
         config = loadConfiguration("config.yml");
         lootConfig = loadConfiguration("config/loot.yml");
@@ -64,8 +61,7 @@ public class ConfigHandler {
                     itemStack = ItemMapping.get(id);
                     itemStack.setAmount(amount);
                     pairs.add(Pair.of(itemStack, probability));
-                } else
-                    throw new IllegalArgumentException();
+                } else throw new IllegalArgumentException();
             }
         }
 
