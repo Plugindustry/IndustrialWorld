@@ -15,3 +15,9 @@ iw#item/raw_copper/name=Raw Copper
 
 iw#item/stone_powder/name=Stone Powder
 iw#item/quartz_powder/name=Quartz Powder
+
+iw#item/wooden_hammer/name=Wooden Hammer
+iw#item/stone_hammer/name=Stone Hammer
+iw#item/iron_hammer/name=Iron Hammer
+iw#item/golden_hammer/name=Golden Hammer
+iw#item/diamond_hammer/name=Diamond Hammer

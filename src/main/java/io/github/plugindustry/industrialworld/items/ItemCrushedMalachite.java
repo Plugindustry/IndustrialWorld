@@ -3,6 +3,7 @@ package io.github.plugindustry.industrialworld.items;
 import io.github.plugindustry.industrialworld.ConstItem;
 import io.github.plugindustry.industrialworld.annotations.ItemInstance;
 import io.github.plugindustry.wheelcore.interfaces.item.DummyItem;
+import io.github.plugindustry.wheelcore.manager.MainManager;
 import io.github.plugindustry.wheelcore.utils.ItemStackUtil;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -41,7 +42,8 @@ public class ItemCrushedMalachite extends DummyItem {
     @Override
     public boolean onInteract(@NotNull Player player, @NotNull Action action, @Nullable EquipmentSlot hand, @Nullable ItemStack tool, @Nullable Block block, @Nullable Entity entity) {
         if (super.onInteract(player, action, hand, tool, block, entity)) {
-            if (action == Action.RIGHT_CLICK_BLOCK && block != null && block.getType() == NEEDED_CAULDRON_TYPE) {
+            if (action == Action.RIGHT_CLICK_BLOCK && block != null && !MainManager.hasBlock(
+                    block.getLocation()) && block.getType() == NEEDED_CAULDRON_TYPE) {
                 Levelled data = (Levelled) block.getBlockData();
                 if (data.getLevel() > 0) {
                     player.getInventory().setItem(Objects.requireNonNull(hand),

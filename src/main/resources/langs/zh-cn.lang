@@ -15,3 +15,9 @@ iw#item/raw_copper/name=粗铜
 
 iw#item/stone_powder/name=石粉
 iw#item/quartz_powder/name=石英粉
+
+iw#item/wooden_hammer/name=木锤
+iw#item/stone_hammer/name=石锤
+iw#item/iron_hammer/name=铁锤
+iw#item/golden_hammer/name=金锤
+iw#item/diamond_hammer/name=钻石锤
