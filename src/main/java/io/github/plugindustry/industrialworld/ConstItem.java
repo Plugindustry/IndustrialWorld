@@ -22,8 +22,7 @@ public final class ConstItem {
     @GeneratedItem(type = Material.FLINT_AND_STEEL, instance = DummyItem.class, id = "iw:fire_starter")
     public static ItemStack FIRE_STARTER;
 
-    @GeneratedItem(type = Material.STONE_PICKAXE, instance = ItemFlintPickaxe.class, oreDictionary = {
-            "pickaxe"})
+    @GeneratedItem(type = Material.STONE_PICKAXE, instance = ItemFlintPickaxe.class, oreDictionary = {"pickaxe"})
     public static ItemStack FLINT_PICKAXE;
     @GeneratedItem(type = Material.STONE_AXE, instance = ItemFlintAxe.class, oreDictionary = {"axe"})
     public static ItemStack FLINT_AXE;

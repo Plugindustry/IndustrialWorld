@@ -34,7 +34,8 @@ public class ConfigHandler {
     public static void init() {
         File dataFolder = IndustrialWorld.instance.getDataFolder();
 
-        if (!dataFolder.isDirectory()) dataFolder.mkdirs();
+        if (!(dataFolder.isDirectory() || dataFolder.mkdirs()))
+            throw new RuntimeException("Failed to create date folder");
 
         config = loadConfiguration("config.yml");
         lootConfig = loadConfiguration("config/loot.yml");

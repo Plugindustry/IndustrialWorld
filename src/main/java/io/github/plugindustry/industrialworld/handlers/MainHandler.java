@@ -9,7 +9,7 @@ import java.util.List;
 public class MainHandler {
     // Return true for events don't need to be cancelled.
 
-    static List<BlockBreakHandler> blockBreakHandlers = new ArrayList<>();
+    static final List<BlockBreakHandler> blockBreakHandlers = new ArrayList<>();
 
     public static boolean processBlockBreak(BlockBreakEvent event) {
         for (BlockBreakHandler blockBreakHandler : blockBreakHandlers)

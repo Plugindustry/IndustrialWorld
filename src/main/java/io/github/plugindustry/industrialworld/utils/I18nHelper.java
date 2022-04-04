@@ -16,18 +16,16 @@ public class I18nHelper {
     public static void loadAllLanguages() {
         try {
             Files.walk(FileSystems.newFileSystem(
-                         Objects.requireNonNull(IndustrialWorld.class.getClassLoader().getResource("langs/"))
-                                .toURI(), Collections.emptyMap()).getPath("langs/")).filter(Files::isRegularFile)
-                 .filter(resource -> resource.getFileName().toString().endsWith(".lang"))
-                 .forEach(resource -> {
-                     try {
-                         I18n.load(Locale.forLanguageTag(
-                                         resource.getFileName().toString().replace(".lang", "")),
-                                 Files.newBufferedReader(resource, StandardCharsets.UTF_8));
-                     } catch (IOException e) {
-                         e.printStackTrace();
-                     }
-                 });
+                            Objects.requireNonNull(IndustrialWorld.class.getClassLoader().getResource("langs/")).toURI(),
+                            Collections.emptyMap()).getPath("langs/")).filter(Files::isRegularFile)
+                    .filter(resource -> resource.getFileName().toString().endsWith(".lang")).forEach(resource -> {
+                        try {
+                            I18n.load(Locale.forLanguageTag(resource.getFileName().toString().replace(".lang", "")),
+                                    Files.newBufferedReader(resource, StandardCharsets.UTF_8));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }

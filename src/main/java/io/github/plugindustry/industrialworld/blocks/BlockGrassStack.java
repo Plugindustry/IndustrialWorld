@@ -27,8 +27,7 @@ public class BlockGrassStack extends DummyBlock implements Tickable {
     public void onTick() {
         MainManager.blockDataProvider.blocksOf(this).forEach(block -> {
             Location location = Objects.requireNonNull(block);
-            BlockGrassStackData temp =
-                    (BlockGrassStackData) Objects.requireNonNull(MainManager.getBlockData(location));
+            BlockGrassStackData temp = (BlockGrassStackData) Objects.requireNonNull(MainManager.getBlockData(location));
 
             temp.addAge(1);
             if (temp.isDried()) {
@@ -42,8 +41,8 @@ public class BlockGrassStack extends DummyBlock implements Tickable {
 
     @Nullable
     @Override
-    public BlockData getInitialData(@Nullable ItemStack item, @NotNull Block block,
-                                    @Nullable Block blockAgainst, @Nullable Player player) {
+    public BlockData getInitialData(@Nullable ItemStack item, @NotNull Block block, @Nullable Block blockAgainst,
+            @Nullable Player player) {
         return new BlockGrassStackData(0);
     }
 
