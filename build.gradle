@@ -11,17 +11,13 @@ repositories {
         name = 'spigotmc-repo'
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
     }
-    maven {
-        name = 'bukkit-rip-snapshots'
-        url = 'https://mvn.bukkit.rip/snapshots'
-    }
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     implementation 'org.jetbrains:annotations:23.0.0'
-    compileOnly 'org.reflections:reflections:0.10.2'
     compileOnly 'org.bukkit:bukkit:1.15.2-R0.1-SNAPSHOT'
-    compileOnly 'io.github.plugindustry.wheelcore:WheelCore:1.0-SNAPSHOT'
+    compileOnly 'com.github.Plugindustry:WheelCore:master-SNAPSHOT'
 }
 
 def targetJavaVersion = 16
