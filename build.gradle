@@ -17,7 +17,7 @@ repositories {
 dependencies {
     implementation 'org.jetbrains:annotations:23.0.0'
     compileOnly 'org.bukkit:bukkit:1.15.2-R0.1-SNAPSHOT'
-    compileOnly 'com.github.Plugindustry:WheelCore:master-SNAPSHOT'
+    compileOnly 'com.github.Plugindustry:WheelCore:0b8c97c06f'
 }
 
 def targetJavaVersion = 16
