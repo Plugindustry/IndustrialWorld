@@ -59,9 +59,7 @@ public class ConfigHandler {
                 itemStack = new ItemStack(Objects.requireNonNull(Material.matchMaterial(id)), amount);
                 pairs.add(Pair.of(itemStack, probability));
             } else if (type.equals("wheelcore")) {
-                String[] tmp = id.split(":");
-                if (tmp.length != 2) throw new IllegalArgumentException();
-                NamespacedKey namespacedKey = new NamespacedKey(tmp[0], tmp[1]);
+                NamespacedKey namespacedKey = NamespacedKey.fromString(id);
                 if (ItemMapping.isItemExists(namespacedKey)) {
                     itemStack = ItemMapping.get(namespacedKey);
                     itemStack.setAmount(amount);
