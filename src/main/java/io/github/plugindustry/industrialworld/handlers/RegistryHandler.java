@@ -37,58 +37,58 @@ public class RegistryHandler {
         // Crafting table
         RecipeRegistry.register(
                 ShapedRecipeFactory.create().map('a', new OreDictionaryChoice("planks")).pattern("aaa", "aaa", "aaa")
-                        .build(new ItemStack(Material.CRAFTING_TABLE)), "minecraft/crafting_table");
+                        .build(new ItemStack(Material.CRAFTING_TABLE)), NamespacedKey.minecraft("crafting_table"));
         RecipeRegistry.register(ShapedRecipeFactory.create()
                 .map('a', new OreDictionaryChoice(Collections.singletonList("pickaxe"), false))
                 .map('b', new OreDictionaryChoice(Collections.singletonList("axe"), false))
                 .map('c', new OreDictionaryChoice("log"))
                 .addDamage(new OreDictionaryChoice(Collections.singletonList("pickaxe"), false), 1)
                 .addDamage(new OreDictionaryChoice(Collections.singletonList("axe"), false), 1).pattern("ab", "cc")
-                .build(new ItemStack(Material.CRAFTING_TABLE)), "minecraft/crafting_table_2");
+                .build(new ItemStack(Material.CRAFTING_TABLE)), NamespacedKey.minecraft("crafting_table_2"));
 
         // Grass & hay
         RecipeRegistry.register(ShapedRecipeFactory.create()
                 .map('a', new ItemInstanceChoice(MainManager.getItemInstance(ConstItem.GRASS))).pattern("aa", "aa")
-                .build(ConstItem.GRASS_STACK), "iw/grass_stack");
+                .build(ConstItem.GRASS_STACK), new NamespacedKey(IndustrialWorld.instance, "grass_stack"));
 
         // Flint tools
         RecipeRegistry.register(ShapedRecipeFactory.create().map('a', new VanillaMaterialChoice(Material.FLINT))
                         .map('b', new VanillaMaterialChoice(Material.STICK)).pattern("aa", "b").build(ConstItem.FLINT_PICKAXE),
-                "iw/flint_pickaxe");
+                new NamespacedKey(IndustrialWorld.instance, "flint_pickaxe"));
         RecipeRegistry.register(ShapedRecipeFactory.create().map('a', new VanillaMaterialChoice(Material.FLINT))
                         .map('b', new VanillaMaterialChoice(Material.STICK)).pattern("aa", "ba").build(ConstItem.FLINT_AXE),
-                "iw/flint_axe");
+                new NamespacedKey(IndustrialWorld.instance, "flint_axe"));
         RecipeRegistry.register(ShapedRecipeFactory.create().map('a', new VanillaMaterialChoice(Material.FLINT))
                         .map('b', new VanillaMaterialChoice(Material.STICK)).pattern("a", "b").build(ConstItem.FLINT_SWORD),
-                "iw/flint_sword");
+                new NamespacedKey(IndustrialWorld.instance, "flint_sword"));
 
         // Hammers
         RecipeRegistry.register(ShapedRecipeFactory.create().map('a', new VanillaMaterialChoice(Material.STICK))
                 .map('b', new OreDictionaryChoice("planks")).pattern("bbb", "bab", "nan")
-                .build(ConstItem.WOODEN_HAMMER), "iw/wooden_hammer");
+                .build(ConstItem.WOODEN_HAMMER), new NamespacedKey(IndustrialWorld.instance, "wooden_hammer"));
         RecipeRegistry.register(ShapedRecipeFactory.create().map('a', new VanillaMaterialChoice(Material.STICK))
                 .map('b', new VanillaMaterialChoice(Material.COBBLESTONE)).pattern("bbb", "bab", "nan")
-                .build(ConstItem.STONE_HAMMER), "iw/stone_hammer");
+                .build(ConstItem.STONE_HAMMER), new NamespacedKey(IndustrialWorld.instance, "stone_hammer"));
         RecipeRegistry.register(ShapedRecipeFactory.create().map('a', new VanillaMaterialChoice(Material.STICK))
                 .map('b', new VanillaMaterialChoice(Material.IRON_INGOT)).pattern("bbb", "bab", "nan")
-                .build(ConstItem.IRON_HAMMER), "iw/iron_hammer");
+                .build(ConstItem.IRON_HAMMER), new NamespacedKey(IndustrialWorld.instance, "iron_hammer"));
         RecipeRegistry.register(ShapedRecipeFactory.create().map('a', new VanillaMaterialChoice(Material.STICK))
                 .map('b', new VanillaMaterialChoice(Material.GOLD_INGOT)).pattern("bbb", "bab", "nan")
-                .build(ConstItem.GOLDEN_HAMMER), "iw/golden_hammer");
+                .build(ConstItem.GOLDEN_HAMMER), new NamespacedKey(IndustrialWorld.instance, "golden_hammer"));
         RecipeRegistry.register(ShapedRecipeFactory.create().map('a', new VanillaMaterialChoice(Material.STICK))
                 .map('b', new VanillaMaterialChoice(Material.DIAMOND)).pattern("bbb", "bab", "nan")
-                .build(ConstItem.DIAMOND_HAMMER), "iw/diamond_hammer");
+                .build(ConstItem.DIAMOND_HAMMER), new NamespacedKey(IndustrialWorld.instance, "diamond_hammer"));
 
         // Crushed malachite
         RecipeRegistry.register(new ShapelessRecipe(
                 Arrays.asList(new ItemInstanceChoice(MainManager.getItemInstance(ConstItem.MALACHITE)),
                         new OreDictionaryChoice(Collections.singletonList("hammer"), false)),
                 ConstItem.CRUSHED_MALACHITE).addItemCost(
-                new OreDictionaryChoice(Collections.singletonList("hammer"), false), 1), "iw/crushed_malachite");
+                new OreDictionaryChoice(Collections.singletonList("hammer"), false), 1), new NamespacedKey(IndustrialWorld.instance, "crushed_malachite"));
 
         // Raw copper
         RecipeRegistry.register(new SmeltingRecipe(ConstItem.PURE_CRUSHED_MALACHITE, ConstItem.RAW_COPPER, 0.5f, 400),
-                "iw/raw_copper");
+                new NamespacedKey(IndustrialWorld.instance, "raw_copper"));
 
         RecipeRegistry.updatePlaceholders();
     }

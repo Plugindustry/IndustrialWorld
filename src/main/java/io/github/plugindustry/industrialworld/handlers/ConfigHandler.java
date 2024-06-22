@@ -4,6 +4,7 @@ import io.github.plugindustry.industrialworld.IndustrialWorld;
 import io.github.plugindustry.wheelcore.manager.ItemMapping;
 import io.github.plugindustry.wheelcore.utils.Pair;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -58,8 +59,11 @@ public class ConfigHandler {
                 itemStack = new ItemStack(Objects.requireNonNull(Material.matchMaterial(id)), amount);
                 pairs.add(Pair.of(itemStack, probability));
             } else if (type.equals("wheelcore")) {
-                if (ItemMapping.isItemExists(id)) {
-                    itemStack = ItemMapping.get(id);
+                String[] tmp = id.split(":");
+                if (tmp.length != 2) throw new IllegalArgumentException();
+                NamespacedKey namespacedKey = new NamespacedKey(tmp[0], tmp[1]);
+                if (ItemMapping.isItemExists(namespacedKey)) {
+                    itemStack = ItemMapping.get(namespacedKey);
                     itemStack.setAmount(amount);
                     pairs.add(Pair.of(itemStack, probability));
                 } else throw new IllegalArgumentException();
