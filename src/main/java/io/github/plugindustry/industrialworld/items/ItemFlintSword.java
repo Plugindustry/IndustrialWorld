@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 import java.util.Optional;
 
-@ItemInstance("iw:flint_sword")
+@ItemInstance("flint_sword")
 public class ItemFlintSword extends DummyItem {
     public final static ItemFlintSword INSTANCE = new ItemFlintSword();
 

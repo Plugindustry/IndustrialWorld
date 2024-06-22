@@ -32,7 +32,8 @@ public class RegisterHelper {
         reflections.getTypesAnnotatedWith(BlockInstance.class).forEach(clazz -> {
             String id = clazz.getAnnotation(BlockInstance.class).value();
             try {
-                MainManager.registerBlock(new NamespacedKey(IndustrialWorld.instance, id), (BlockBase) clazz.getDeclaredField("INSTANCE").get(null));
+                MainManager.registerBlock(new NamespacedKey(IndustrialWorld.instance, id),
+                        (BlockBase) clazz.getDeclaredField("INSTANCE").get(null));
             } catch (Exception e) {
                 IndustrialWorld.instance.getLogger().log(Level.SEVERE, e, () -> "Failed to register block " + id);
             }
@@ -46,7 +47,8 @@ public class RegisterHelper {
         reflections.getTypesAnnotatedWith(ItemInstance.class).forEach(clazz -> {
             String id = clazz.getAnnotation(ItemInstance.class).value();
             try {
-                MainManager.registerItem(new NamespacedKey(IndustrialWorld.instance, id), (ItemBase) clazz.getDeclaredField("INSTANCE").get(null));
+                MainManager.registerItem(new NamespacedKey(IndustrialWorld.instance, id),
+                        (ItemBase) clazz.getDeclaredField("INSTANCE").get(null));
             } catch (Exception e) {
                 IndustrialWorld.instance.getLogger().log(Level.SEVERE, e, () -> "Failed to register item " + id);
             }
@@ -56,24 +58,30 @@ public class RegisterHelper {
     public static void generateItems(Class<?> clazz) {
         Arrays.stream(clazz.getDeclaredFields())
                 .filter(field -> Modifier.isStatic(field.getModifiers()) && field.getType() == ItemStack.class &&
-                        field.canAccess(null) && field.isAnnotationPresent(GeneratedItem.class)).forEach(field -> {
+                                 field.canAccess(null) && field.isAnnotationPresent(GeneratedItem.class))
+                .forEach(field -> {
                     try {
                         GeneratedItem annotation = field.getAnnotation(GeneratedItem.class);
                         ItemBase instance;
                         if (annotation.instance() == DummyItem.class)
-                            MainManager.registerItem(new NamespacedKey(IndustrialWorld.instance, annotation.id()), instance = new DummyItem());
+                            MainManager.registerItem(new NamespacedKey(IndustrialWorld.instance, annotation.id()),
+                                    instance = new DummyItem());
                         else if (annotation.instance() == DummyBlockItem.class)
-                            MainManager.registerItem(new NamespacedKey(IndustrialWorld.instance, annotation.id()), instance = new DummyBlockItem());
+                            MainManager.registerItem(new NamespacedKey(IndustrialWorld.instance, annotation.id()),
+                                    instance = new DummyBlockItem());
                         else instance = (ItemBase) annotation.instance().getDeclaredField("INSTANCE").get(null);
 
                         NamespacedKey id = Objects.requireNonNull(MainManager.getIdFromInstance(instance));
                         ItemStackUtil.ItemStackFactory temp = ItemStackUtil.create(annotation.type()).instance(instance)
                                 .oreDictionary(annotation.oreDictionary());
-                        if (annotation.hasDisplayName()) temp.displayName(I18n.getLocalePlaceholder(id));
-                        if (annotation.hasLore()) temp.lore(Collections.singletonList(I18n.getLocaleListPlaceholder(id)));
+                        if (annotation.hasDisplayName()) temp.displayName(I18n.getLocalePlaceholder(
+                                new NamespacedKey(id.getNamespace(), String.format("item/%s/name", id.getKey()))));
+                        if (annotation.hasLore()) temp.lore(Collections.singletonList(I18n.getLocaleListPlaceholder(
+                                new NamespacedKey(id.getNamespace(), String.format("item/%s/lore", id.getKey())))));
                         switch (annotation.customModelDataType()) {
                             case NONE -> ItemMapping.set(id, temp.getItemStack());
-                            case ID_GENERATED -> ItemMapping.set(id, temp.customModelData(id.toString()).getItemStack());
+                            case ID_GENERATED ->
+                                    ItemMapping.set(id, temp.customModelData(id.toString()).getItemStack());
                             case MANUAL -> ItemMapping.set(id,
                                     temp.customModelData(annotation.customModelData()).getItemStack());
                         }

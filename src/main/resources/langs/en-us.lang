@@ -1,23 +1,23 @@
-iw#item/grass/name=Grass
-iw#item/hay/name=Hay
+item/grass/name=Grass
+item/hay/name=Hay
 
-iw#item/hay_stack/name=Hay Stack
-iw#item/grass_stack/name=Grass Stack
-iw#item/fire_starter/name=Fire Starter
-iw#item/flint_pickaxe/name=Flint Pickaxe
-iw#item/flint_axe/name=Flint Axe
-iw#item/flint_sword/name=Flint Sword
+item/hay_stack/name=Hay Stack
+item/grass_stack/name=Grass Stack
+item/fire_starter/name=Fire Starter
+item/flint_pickaxe/name=Flint Pickaxe
+item/flint_axe/name=Flint Axe
+item/flint_sword/name=Flint Sword
 
-iw#item/malachite/name=Malachite
-iw#item/crushed_malachite/name=Crushed Malachite
-iw#item/pure_crushed_malachite/name=Pure Crushed Malachite
-iw#item/raw_copper/name=Raw Copper
+item/malachite/name=Malachite
+item/crushed_malachite/name=Crushed Malachite
+item/pure_crushed_malachite/name=Pure Crushed Malachite
+item/raw_copper/name=Raw Copper
 
-iw#item/stone_powder/name=Stone Powder
-iw#item/quartz_powder/name=Quartz Powder
+item/stone_powder/name=Stone Powder
+item/quartz_powder/name=Quartz Powder
 
-iw#item/wooden_hammer/name=Wooden Hammer
-iw#item/stone_hammer/name=Stone Hammer
-iw#item/iron_hammer/name=Iron Hammer
-iw#item/golden_hammer/name=Golden Hammer
-iw#item/diamond_hammer/name=Diamond Hammer
+item/wooden_hammer/name=Wooden Hammer
+item/stone_hammer/name=Stone Hammer
+item/iron_hammer/name=Iron Hammer
+item/golden_hammer/name=Golden Hammer
+item/diamond_hammer/name=Diamond Hammer

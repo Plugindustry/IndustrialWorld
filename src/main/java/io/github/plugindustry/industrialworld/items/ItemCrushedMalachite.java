@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
-@ItemInstance("iw:crushed_malachite")
+@ItemInstance("crushed_malachite")
 public class ItemCrushedMalachite extends DummyItem {
     public static final ItemCrushedMalachite INSTANCE = new ItemCrushedMalachite();
 

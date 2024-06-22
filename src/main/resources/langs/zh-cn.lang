@@ -1,23 +1,23 @@
-iw#item/grass/name=草
-iw#item/hay/name=干草
+item/grass/name=草
+item/hay/name=干草
 
-iw#item/hay_stack/name=干草垛
-iw#item/grass_stack/name=草垛
-iw#item/fire_starter/name=引火器
-iw#item/flint_pickaxe/name=燧石镐
-iw#item/flint_axe/name=燧石斧
-iw#item/flint_sword/name=燧石剑
+item/hay_stack/name=干草垛
+item/grass_stack/name=草垛
+item/fire_starter/name=引火器
+item/flint_pickaxe/name=燧石镐
+item/flint_axe/name=燧石斧
+item/flint_sword/name=燧石剑
 
-iw#item/malachite/name=孔雀石
-iw#item/crushed_malachite/name=粉碎孔雀石
-iw#item/pure_crushed_malachite/name=纯净粉碎孔雀石
-iw#item/raw_copper/name=粗铜
+item/malachite/name=孔雀石
+item/crushed_malachite/name=粉碎孔雀石
+item/pure_crushed_malachite/name=纯净粉碎孔雀石
+item/raw_copper/name=粗铜
 
-iw#item/stone_powder/name=石粉
-iw#item/quartz_powder/name=石英粉
+item/stone_powder/name=石粉
+item/quartz_powder/name=石英粉
 
-iw#item/wooden_hammer/name=木锤
-iw#item/stone_hammer/name=石锤
-iw#item/iron_hammer/name=铁锤
-iw#item/golden_hammer/name=金锤
-iw#item/diamond_hammer/name=钻石锤
+item/wooden_hammer/name=木锤
+item/stone_hammer/name=石锤
+item/iron_hammer/name=铁锤
+item/golden_hammer/name=金锤
+item/diamond_hammer/name=钻石锤

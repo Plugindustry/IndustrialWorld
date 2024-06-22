@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 import java.util.Optional;
 
-@ItemInstance("iw:flint_pickaxe")
+@ItemInstance("flint_pickaxe")
 public class ItemFlintPickaxe extends DummyTool {
     public final static ItemFlintPickaxe INSTANCE = new ItemFlintPickaxe();
     private final static ItemStack WOODEN_PICKAXE = new ItemStack(Material.WOODEN_PICKAXE);
