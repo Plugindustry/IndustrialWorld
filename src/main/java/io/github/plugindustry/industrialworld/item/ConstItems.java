@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class ConstItems {
     public static ItemStack FLINT_AXE_HEAD;
+    public static ItemStack FLINT_AXE;
 
     public static void initItems() {
         ItemBase instance = new DummyItem();
@@ -20,7 +21,15 @@ public class ConstItems {
         MainManager.registerItem(id, instance);
         FLINT_AXE_HEAD = new ItemStackUtil.ItemStackFactory(Material.FLINT).instance(instance).displayName(
                         I18n.getLocalePlaceholder(new NamespacedKey(IndustrialWorld.getInstance(), "item/flint_axe_head/name")))
-                .oreDictionary("axe").getItemStack();
+                .getItemStack();
         ItemMapping.set(id, FLINT_AXE_HEAD);
+
+        instance = ItemFlintAxe.getInstance();
+        id = new NamespacedKey(IndustrialWorld.getInstance(), "flint_axe");
+        MainManager.registerItem(id, instance);
+        FLINT_AXE = new ItemStackUtil.ItemStackFactory(Material.STONE_AXE).instance(instance).displayName(
+                        I18n.getLocalePlaceholder(new NamespacedKey(IndustrialWorld.getInstance(), "item/flint_axe/name")))
+                .oreDictionary("axe").getItemStack();
+        ItemMapping.set(id, FLINT_AXE);
     }
 }
